@@ -1,9 +1,9 @@
 import streamlit as st
+from controllers.pendidikan_controller import df_pendidikan_smk
 
-st.title("DASHBOARD BNA")
+st.title("DATA PENDIDIKAN BNA")
 
-st.markdown(
-"""
-##### Data belum ditampilkan...
-"""
-)
+
+st.dataframe(df_pendidikan_smk)
+
+
