@@ -12,7 +12,7 @@
 - Semua data diambil dari BPS Kabupaten Banjarnegara atau Banajarnegara Satu Datu
 ##### DATA BNA UNTUK SEMUA
 
-#### DOC
+### DOC
 #####  Format .csv file untuk data GIS
 | kecamatan  | x          | y          | total  |
 |------------|------------|------------|--------|
@@ -21,3 +21,4 @@
 | dst.       | dst.       | dst        | 31000  |
 
 Harus ada kolom kecamatan dan kolom total.
+Dataset harus dari sumber resmi (BPS atau website milik pemerintah)

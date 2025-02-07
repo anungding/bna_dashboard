@@ -80,3 +80,9 @@ class KesehatanController:
     def group_by_kecamatan(self, df_combined):
         # Group by kecamatan dan jumlahkan nilai
         return df_combined.groupby('kecamatan', as_index=False).sum()
+
+    def total_by_year(self, df_combined, tahun, kolom):
+        return df_combined[df_combined['tahun'] == str(tahun)][kolom].sum()
+
+
+
