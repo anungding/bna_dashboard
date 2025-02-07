@@ -1,7 +1,7 @@
 import streamlit as st
 
 # Judul utama dari dashboard
-st.title("DASHBOARD BNA")
+st.title("DASHBOARD BNA ⏹️")
 
 # Penjelasan singkat tentang dashboard BNA
 st.markdown(
