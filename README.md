@@ -13,7 +13,7 @@
 ##### DATA BNA UNTUK SEMUA
 
 ## DOC
-#####  Format .csv file untuk data GIS
+### Format .csv file untuk data GIS
 | kecamatan  | x          | y          | total  |
 |------------|------------|------------|--------|
 | Mandiraja  | bla        | bli        | 28000  |
@@ -23,7 +23,7 @@
 ##### Harus ada kolom kecamatan dan kolom total.
 ##### Dataset harus dari sumber resmi (BPS atau website milik pemerintah)
 
-#### Struktur Konten (Pages)
+### Struktur Konten (Pages)
 - Judul
     - Sub Judul 1
         - Filter
