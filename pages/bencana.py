@@ -34,33 +34,31 @@ else:
     filtered_data = bencana_controller.filter_data(tahun_filter, kategori_filter, kecamatan_filter)
 
     st.write(f"Data yang difilter berdasarkan Tahun: {tahun_filter}, Kategori: {kategori_filter}, Kecamatan: {kecamatan_filter}")
-    st.dataframe(filtered_data, use_container_width=True)
-
-    # Unduh data
-    csv = bencana_controller.convert_df(filtered_data)
-    st.download_button("Unduh Data yang Diperbarui", data=csv, file_name='data_filtered.csv', mime='text/csv')
 
     # Perhitungan total
     if not filtered_data.empty:
         total_semua_tahun = filtered_data['Total'].sum()
         st.metric("Total Keseluruhan Bencana", f"{total_semua_tahun}")
 
-        # **Chart Total Bencana per Tahun**
-        grouped_by_tahun = bencana_controller.get_grouped_data(filtered_data, 'Tahun')
-        st.subheader("Total Bencana per Tahun")
-        chart_tahun = alt.Chart(grouped_by_tahun).mark_bar().encode(
-            x='Tahun:N', y='Total:Q', color='Tahun:N', tooltip=['Tahun', 'Total']
-        ).properties(width=600, height=400)
-        st.altair_chart(chart_tahun, use_container_width=True)
+        col_chart_tahun, col_chart_bulan = st.columns(2)
+        with col_chart_tahun:
+            # **Chart Total Bencana per Tahun**
+            grouped_by_tahun = bencana_controller.get_grouped_data(filtered_data, 'Tahun')
+            st.subheader("Total Bencana per Tahun")
+            chart_tahun = alt.Chart(grouped_by_tahun).mark_bar().encode(
+                x='Tahun:N', y='Total:Q', color='Tahun:N', tooltip=['Tahun', 'Total']
+            ).properties(width=600, height=400)
+            st.altair_chart(chart_tahun, use_container_width=True)
+        with col_chart_bulan:
+            # **Chart Total Bencana per Bulan**
+            total_per_bulan = bencana_controller.get_total_per_bulan(filtered_data)
+            st.subheader("Total Bencana per Bulan")
+            chart_bulan = alt.Chart(total_per_bulan).mark_bar().encode(
+                x='Bulan:N', y='Total:Q', color='Bulan:N', tooltip=['Bulan', 'Total']
+            ).properties(width=600, height=400)
+            st.altair_chart(chart_bulan, use_container_width=True)
 
-        # **Chart Total Bencana per Bulan**
-        total_per_bulan = bencana_controller.get_total_per_bulan(filtered_data)
-        st.subheader("Total Bencana per Bulan")
-        chart_bulan = alt.Chart(total_per_bulan).mark_bar().encode(
-            x='Bulan:N', y='Total:Q', color='Bulan:N', tooltip=['Bulan', 'Total']
-        ).properties(width=600, height=400)
-        st.altair_chart(chart_bulan, use_container_width=True)
-
+    
         # **Chart Total Bencana per Kategori**
         grouped_by_tahun = bencana_controller.get_grouped_data(filtered_data, 'Kategori')
         st.subheader("Total Bencana per Kategori")
@@ -76,3 +74,11 @@ else:
             x='Kecamatan:N', y='Total:Q', color='Kecamatan:N', tooltip=['Kecamatan', 'Total']
         ).properties(width=600, height=400)
         st.altair_chart(chart_tahun, use_container_width=True)
+
+
+    st.dataframe(filtered_data, use_container_width=True)
+
+    # Unduh data
+    csv = bencana_controller.convert_df(filtered_data)
+    st.download_button("Unduh Data yang Diperbarui", data=csv, file_name='data_filtered.csv', mime='text/csv')
+
