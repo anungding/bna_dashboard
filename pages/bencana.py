@@ -2,7 +2,7 @@ import streamlit as st
 import altair as alt
 from controllers.bencana_controller import BencanaController
 
-st.title("DATA BENCANA BNA")
+st.title("DATA BENCANA BNA 🌋")
 st.markdown("Silakan pilih filter yang sesuai untuk melihat data yang relevan dengan kebutuhan Anda.")
 
 # Pastikan controller tersedia di session state
