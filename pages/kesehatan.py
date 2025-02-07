@@ -6,6 +6,9 @@ from controllers.kesehatan_controller import KesehatanController
 kesehatan_controller = KesehatanController()
 
 st.title("DATA KESEHATAN BNA 🚑🧑‍⚕️🦠")
+st.markdown("""
+---
+""")
 st.subheader("DATA TENAGA KESEHATAN BNA 🧑‍⚕️")
 
 # Ambil data yang telah digabungkan (cek apakah sudah ada di session state)
@@ -27,18 +30,42 @@ with col_sel_fil_2:
 
 # Filter berdasarkan pilihan
 filtered_data = kesehatan_controller.filter_data(df_combined, selected_year, selected_kecamatan)
-total_dokter_2023 = kesehatan_controller.total_by_year(df_combined, 2023, 'dokter')
-total_perawat_2023 = kesehatan_controller.total_by_year(df_combined, 2023, 'perawat')
-total_bidan_2023 = kesehatan_controller.total_by_year(df_combined, 2023, 'bidan')
-
 
 col_card_1, col_card_2, col_card_3 = st.columns(3)
 with col_card_1:
-    st.metric("Jumlah Dokter 2023", f"{total_dokter_2023}")
+    tahun_terakhir, total = kesehatan_controller.total_for_last_year(df_combined, 'dokter')
+    st.metric(f"Jumlah Dokter {tahun_terakhir}", f"{total}")
+
 with col_card_2:
-    st.metric("Jumlah Perawat 2023", f"{total_perawat_2023}")
+    tahun_terakhir, total = kesehatan_controller.total_for_last_year(df_combined, 'perawat')
+    st.metric(f"Jumlah Perawat {tahun_terakhir}", f"{total}")
 with col_card_3:
-    st.metric("Jumlah Bidan 2023", f"{total_bidan_2023}")
+    tahun_terakhir, total = kesehatan_controller.total_for_last_year(df_combined, 'bidan')
+    st.metric(f"Jumlah Bidan {tahun_terakhir}", f"{total}")
+
+col_card_1, col_card_2, col_card_3 = st.columns(3)
+with col_card_1:
+    tahun_terakhir, total = kesehatan_controller.total_for_last_year(df_combined, 'dokter_gigi')
+    st.metric(f"Jumlah Dokter Gigi {tahun_terakhir}", f"{total}")
+
+with col_card_2:
+    tahun_terakhir, total = kesehatan_controller.total_for_last_year(df_combined, 'farmasi')
+    st.metric(f"Jumlah Tenaga Farmasi {tahun_terakhir}", f"{total}")
+with col_card_3:
+    tahun_terakhir, total = kesehatan_controller.total_for_last_year(df_combined, 'tenaga_gizi')
+    st.metric(f"Jumlah Tenaga Gizi {tahun_terakhir}", f"{total}")
+
+col_card_1, col_card_2, col_card_3 = st.columns(3)
+with col_card_1:
+    tahun_terakhir, total = kesehatan_controller.total_for_last_year(df_combined, 'tenaga_kesehatan_masyarakat')
+    st.metric(f"Tenaga Kesehatan Masyarakat {tahun_terakhir}", f"{total}")
+
+with col_card_2:
+    tahun_terakhir, total = kesehatan_controller.total_for_last_year(df_combined, 'tenaga_kesehatan_lingkungan')
+    st.metric(f"Tenaga Kesehatan Lingkungan {tahun_terakhir}", f"{total}")
+with col_card_3:
+    tahun_terakhir, total = kesehatan_controller.total_for_last_year(df_combined, 'ahli_teknologi_laboratorium_medik')
+    st.metric(f"ATLM {tahun_terakhir}", f"{total}")
    
 # Tampilkan tabel data yang sudah difilter
 st.dataframe(filtered_data)

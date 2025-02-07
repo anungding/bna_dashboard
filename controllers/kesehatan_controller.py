@@ -81,8 +81,14 @@ class KesehatanController:
         # Group by kecamatan dan jumlahkan nilai
         return df_combined.groupby('kecamatan', as_index=False).sum()
 
-    def total_by_year(self, df_combined, tahun, kolom):
+    def total_for_year(self, df_combined, tahun, kolom):
         return df_combined[df_combined['tahun'] == str(tahun)][kolom].sum()
+
+    def total_for_last_year(self, df_combined, kolom):
+        tahun_terakhir = df_combined['tahun'].max() 
+        total = int(df_combined[df_combined['tahun'] == str(tahun_terakhir)][kolom].sum()) 
+        return tahun_terakhir, total
+
 
 
 
