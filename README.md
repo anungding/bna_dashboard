@@ -1,4 +1,10 @@
 ### BNA DATA
 - Dashboard
 - Dataset
-#### DATA BNA UNTUK SEMUA
+
+#### Install App
+- Clone repository ke lokal
+- Install Dependencies
+- Run python -m streamlit run app.py
+- 
+##### DATA BNA UNTUK SEMUA
