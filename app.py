@@ -2,6 +2,7 @@ import streamlit as st
 from controllers.pendidikan_controller import PendidikanController
 from controllers.bencana_controller import BencanaController
 from controllers.pariwisata_controller import PariwisataController
+from controllers.kesehatan_controller import KesehatanController
 
 # Membuat halaman-halaman yang akan digunakan di dalam aplikasi Streamlit
 beranda_page = st.Page("pages/beranda.py", title="Beranda", icon="⏹️")
@@ -17,6 +18,8 @@ if "pendidikan_controller" not in st.session_state:
     st.session_state["pendidikan_controller"] = PendidikanController() 
 if "bencana_controller" not in st.session_state:
     st.session_state["bencana_controller"] = BencanaController() 
+if "kesehatan_controller" not in st.session_state:
+    st.session_state["kesehatan_controller"] = KesehatanController() 
 if "pariwisata_controller" not in st.session_state:
     st.session_state["pariwisata_controller"] = PariwisataController()  
 
