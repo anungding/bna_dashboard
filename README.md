@@ -20,5 +20,5 @@
 | Sigaluh    | bla        | bli        | 34000  |
 | dst.       | dst.       | dst        | 31000  |
 
-Harus ada kolom kecamatan dan kolom total.
-Dataset harus dari sumber resmi (BPS atau website milik pemerintah)
+##### Harus ada kolom kecamatan dan kolom total.
+##### Dataset harus dari sumber resmi (BPS atau website milik pemerintah)
