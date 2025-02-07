@@ -32,25 +32,33 @@ else:
 
     st.write(f"Data yang difilter berdasarkan Tahun: {tahun_filter}, Bulan: {bulan_filter}, Nama Wisata: {nama_wisata_filter}")
 
-    # **Chart Total Kunjungan per Tahun**
+
     if not filtered_data.empty:
-        st.subheader("Total Kunjungan per Tahun")
-        grouped_by_tahun = controller.get_grouped_data(filtered_data, 'tahun')
-        chart_tahun = alt.Chart(grouped_by_tahun).mark_bar().encode(
-            x='tahun:N', y='kunjungan:Q', color='tahun:N', tooltip=['tahun', 'kunjungan']
-        ).properties(width=600, height=400)
-        st.altair_chart(chart_tahun, use_container_width=True)
+        col_chart_tahun, col_chart_bulan = st.columns(2)
 
-        # **Chart Total Kunjungan per Bulan**
-        st.subheader("Total Kunjungan per Bulan")
-        total_per_bulan = controller.get_total_per_bulan(filtered_data)
-        chart_bulan = alt.Chart(total_per_bulan).mark_bar().encode(
-            x='Bulan:N', y='Total:Q', color='Bulan:N', tooltip=['Bulan', 'Total']
-        ).properties(width=600, height=400)
-        st.altair_chart(chart_bulan, use_container_width=True)
+        with col_chart_tahun:
+            # **Chart Total Kunjungan per Tahun**
+            st.subheader("Total Kunjungan per Tahun")
+            st.write(f"Data yang difilter berdasarkan Tahun: {tahun_filter}, Bulan: {bulan_filter}, Nama Wisata: {nama_wisata_filter}")
+            grouped_by_tahun = controller.get_grouped_data(filtered_data, 'tahun')
+            chart_tahun = alt.Chart(grouped_by_tahun).mark_bar().encode(
+                x='tahun:N', y='kunjungan:Q', color='tahun:N', tooltip=['tahun', 'kunjungan']
+            ).properties(width=600, height=400)
+            st.altair_chart(chart_tahun, use_container_width=True)
 
-        # **Chart Total Kunjungan per Nama Wisata**
-        st.subheader("Total Kunjungan per Nama Wisata")
+        with col_chart_bulan:
+            # **Chart Total Kunjungan per Bulan**
+            st.subheader("Total Kunjungan per Bulan")
+            st.write(f"Data yang difilter berdasarkan Tahun: {tahun_filter}, Bulan: {bulan_filter}, Nama Wisata: {nama_wisata_filter}")
+            total_per_bulan = controller.get_total_per_bulan(filtered_data)
+            chart_bulan = alt.Chart(total_per_bulan).mark_bar().encode(
+                x='Bulan:N', y='Total:Q', color='Bulan:N', tooltip=['Bulan', 'Total']
+            ).properties(width=600, height=400)
+            st.altair_chart(chart_bulan, use_container_width=True)
+
+        # **Chart Total Kunjungan per Wisata**
+        st.subheader("Total Kunjungan per Tempat Wisata")
+        st.write(f"Data yang difilter berdasarkan Tahun: {tahun_filter}, Bulan: {bulan_filter}, Nama Wisata: {nama_wisata_filter}")
         grouped_by_nama = controller.get_grouped_data(filtered_data, 'nama')
         chart_nama = alt.Chart(grouped_by_nama).mark_bar().encode(
             x='nama:N', y='kunjungan:Q', color='nama:N', tooltip=['nama', 'kunjungan']
