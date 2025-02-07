@@ -2,7 +2,7 @@ import streamlit as st
 import altair as alt
 from controllers.pariwisata_controller import PariwisataController
 
-st.title("DATA PARIWISATA BNA")
+st.title("DATA PARIWISATA BNA 🚠")
 st.markdown("Silakan pilih filter yang sesuai untuk melihat data yang relevan.")
 
 # Inisialisasi controller
