@@ -1,6 +1,7 @@
 import streamlit as st
 
 
+
 beranda_page = st.Page("pages/beranda.py", title="Beranda", icon="⏹️")
 bencana_page = st.Page("pages/bencana.py", title="Bencana", icon="🌋")
 penduduk_page = st.Page("pages/penduduk.py", title="Penduduk", icon="👯")
@@ -10,6 +11,11 @@ kesehatan_page = st.Page("pages/kesehatan.py", title="Kesehatan", icon="🧑‍�
 gis_page = st.Page("pages/gis.py", title="GIS", icon="🗺️")
 
 
+# Pastikan controller sudah ada di session_state
+from controllers.pendidikan_controller import PendidikanController
+
+if "pendidikan_controller" not in st.session_state:
+    st.session_state["pendidikan_controller"] = PendidikanController()
 
 
 pg = st.navigation(
