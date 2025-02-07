@@ -21,11 +21,11 @@ if "pendidikan_controller" not in st.session_state:
 pg = st.navigation(
     [
         beranda_page, 
-        bencana_page, 
         penduduk_page, 
         pariwisata_page, 
         pendidikan_page,
         kesehatan_page,
+        bencana_page, 
         gis_page
     ]
 )

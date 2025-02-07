@@ -10,11 +10,6 @@ from folium.plugins import MarkerCluster
 
 st.title("DATA PENDUDUK BNA")
 
-st.markdown(
-"""
-##### Data belum ditampilkan...
-"""
-)
 geojson_file_path = "dataset/geojson/BNAGEOJSON.geojson"
 with open(geojson_file_path, "r", encoding="utf-8") as geojson_file:
     geojson_data = json.load(geojson_file)

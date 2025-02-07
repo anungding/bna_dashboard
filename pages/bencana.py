@@ -1,6 +1,6 @@
 import streamlit as st
 import altair as alt
-from controller import load_combined_data, filter_data, convert_df, get_total_per_bulan, get_grouped_data
+from controllers.bencana_controller import load_combined_data, filter_data, convert_df, get_total_per_bulan, get_grouped_data
 
 st.title("DATA BENCANA BNA")
 st.markdown("Silakan pilih filter yang sesuai untuk melihat data yang relevan dengan kebutuhan Anda.")
