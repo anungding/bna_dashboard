@@ -43,8 +43,8 @@ color_mapping = {
 
 # Menentukan file CSV berdasarkan pilihan
 dataset_file_mapping = {
-    "Penduduk-BPS-2019": "dataset/penduduk/penduduk_bna_2019.csv",
-    "Pertanian-Sawah-BPS-2023": "dataset/pertanian/pertanian_sawah_2023.csv"
+    "Penduduk-BPS-2019": "dataset/population/penduduk_bna_2019.csv",
+    "Pertanian-Sawah-BPS-2023": "dataset/agriculture/pertanian_sawah_2023.csv"
 }
 
 csv_file_path = dataset_file_mapping.get(dataset_option)
