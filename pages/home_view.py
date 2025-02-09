@@ -86,6 +86,6 @@ with col8:
 # Informasi tentang kontribusi pada proyek
 st.markdown("""
 #### Mau berkontribusi?
-- 🚀[Github](https://www.example.com)
+- Project 🚀[Github][https://github.com/anungding/bna_data](https://github.com/anungding/bna_data)
 #### Bersama, mari wujudkan ekosistem data terbuka untuk membangun daerah yang lebih cerdas, maju, dan berkelanjutan!
 """)
