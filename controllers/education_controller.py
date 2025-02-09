@@ -1,6 +1,6 @@
 import pandas as pd
 
-class PendidikanController:
+class EducationController:
     def __init__(self):
         self.data_files = {
             2023: "dataset/pendidikan/pendidikan_smk_2023.csv"

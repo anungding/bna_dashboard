@@ -1,5 +1,5 @@
 # BNA DATA
-Kami percaya bahwa data adalah kunci untuk pengambilan keputusan yang lebih baik. Oleh karena itu, kami menghadirkan BNA DASHBOARD, sebuah platform open-source yang menyediakan data, dashboard, dan visualisasi interaktif untuk mendukung transparansi, inovasi, dan kemajuan di BNA.
+Kami percaya bahwa data adalah kunci untuk pengambilan keputusan yang lebih baik. Oleh karena itu, kami menghadirkan BNA DASHBOARD, sebuah platform open-source yang menyediakan data, dashboard, dan visualisasi interaktif untuk mendukung transparansi, inovasi, dan kemajuan di BNA. Kami memfokuskan terlebih dahulu pada pengolahan dan pengembangan data pendidikan, bencana, penduduk, pariwisata, dan kesehatan. Data-data tersebut sangat penting karena dapat memberikan wawasan yang mendalam untuk meningkatkan kualitas hidup masyarakat, merencanakan pembangunan yang lebih efektif, serta mengelola sumber daya dengan lebih baik.
 
 #### Catatan
 - Semua data .csv ada di folder dataset.
