@@ -17,7 +17,7 @@ with open(geojson_file_path, "r", encoding="utf-8") as geojson_file:
     geojson_data = json.load(geojson_file)
 
 # ====== Load Population Data ======
-population_csv_path = 'dataset/penduduk/penduduk_bna_2019.csv'
+population_csv_path = 'dataset/population/penduduk_bna_2019.csv'
 penduduk_data = pd.read_csv(population_csv_path)
 
 # Normalisasi nama kecamatan (hapus spasi & perbaiki kesalahan nama)

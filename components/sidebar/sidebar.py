@@ -19,7 +19,7 @@ def create_sidebar():
     """Membuat sidebar dan navigasi antar halaman."""
     home_page = st.Page("pages/home_view.py", title="Beranda", icon="⏹️")
     disaster_page = st.Page("pages/disaster_view.py", title="Bencana", icon="🌋")
-    penduduk_page = st.Page("pages/penduduk.py", title="Penduduk", icon="👯")
+    penduduk_page = st.Page("pages/population_view.py", title="Penduduk", icon="👯")
     tourism_page = st.Page("pages/tourism_view.py", title="Pariwisata", icon="🚠")
     education_page = st.Page("pages/education_view.py", title="Pendidikan", icon="🎓")
     healty_page = st.Page("pages/healty_view.py", title="Kesehatan", icon="🧑‍⚕️")
