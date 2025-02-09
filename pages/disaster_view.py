@@ -1,13 +1,13 @@
 import streamlit as st
 import altair as alt
-from controllers.bencana_controller import BencanaController
+from controllers.disaster_controller import DisasterController
 
 st.title("DATA BENCANA BNA 🌋")
 st.markdown("Silakan pilih filter yang sesuai untuk melihat data yang relevan dengan kebutuhan Anda.")
 
 # Pastikan controller tersedia di session state
 if "bencana_controller" not in st.session_state:
-    st.session_state["bencana_controller"] = BencanaController()
+    st.session_state["bencana_controller"] = DisasterController()
 
 bencana_controller = st.session_state["bencana_controller"]
 

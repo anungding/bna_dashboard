@@ -2,7 +2,7 @@ import pandas as pd
 import os
 import streamlit as st
 
-class BencanaController:
+class DisasterController:
     def __init__(self, dataset_folder='dataset/bencana/'):
         self.dataset_folder = dataset_folder
         self.data = None
