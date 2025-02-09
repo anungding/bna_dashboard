@@ -23,7 +23,7 @@ def create_sidebar():
     tourism_page = st.Page("pages/tourism_view.py", title="Pariwisata", icon="🚠")
     education_page = st.Page("pages/education_view.py", title="Pendidikan", icon="🎓")
     healty_page = st.Page("pages/healty_view.py", title="Kesehatan", icon="🧑‍⚕️")
-    gis_page = st.Page("pages/gis.py", title="GIS", icon="🗺️")
+    gis_page = st.Page("pages/gis_view.py", title="GIS", icon="🗺️")
 
     pg = st.navigation(
         [
