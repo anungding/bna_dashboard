@@ -1,16 +1,16 @@
 import pandas as pd
 import streamlit as st
 
-class KesehatanController:
+class HealtyController:
     def __init__(self):
         # Menyiapkan data paths per tahun
         self.data_files = {
-            2023: "dataset/kesehatan/tenaga_kesehatan_per_kecamatan_2023.csv",
-            2022: "dataset/kesehatan/tenaga_kesehatan_per_kecamatan_2022.csv",
-            2021: "dataset/kesehatan/tenaga_kesehatan_per_kecamatan_2021.csv",
-            2020: "dataset/kesehatan/tenaga_kesehatan_per_kecamatan_2020.csv",
-            2019: "dataset/kesehatan/tenaga_kesehatan_per_kecamatan_2019.csv",
-            2018: "dataset/kesehatan/tenaga_kesehatan_per_kecamatan_2018.csv"
+            2023: "dataset/healty/tenaga_kesehatan_per_kecamatan_2023.csv",
+            2022: "dataset/healty/tenaga_kesehatan_per_kecamatan_2022.csv",
+            2021: "dataset/healty/tenaga_kesehatan_per_kecamatan_2021.csv",
+            2020: "dataset/healty/tenaga_kesehatan_per_kecamatan_2020.csv",
+            2019: "dataset/healty/tenaga_kesehatan_per_kecamatan_2019.csv",
+            2018: "dataset/healty/tenaga_kesehatan_per_kecamatan_2018.csv"
         }
 
     def load_data(self, file_path, tahun):
