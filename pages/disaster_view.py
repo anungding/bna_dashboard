@@ -60,7 +60,7 @@ else:
     
        
         col1, col2, col3, col4 = st.columns(4)
-        col1.metric(label="Total Banyak Bencana", value= f"{total_semua_tahun}")
+        col1.metric(label="Total Banyak Bencana", value= f"{int(total_semua_tahun):,}")
         col2.metric(label="Bulan dengan Bencana Terbanyak", value=f"{bulan_terbanyak_nama}")
         col3.metric(label="Tahun dengan Bencana Terbanyak", value=f"{tahun_terbanyak}")
         col4.metric(label="Kategori dengan Bencana Terbanyak", value=f"{kategori_terbanyak}")

@@ -30,7 +30,12 @@ else:
     # Filter data
     filtered_data = controller.get_filtered_data(tahun_filter, bulan_filter, nama_wisata_filter)
 
-    st.write(f"Data yang difilter berdasarkan Tahun: {tahun_filter}, Bulan: {bulan_filter}, Nama Wisata: {nama_wisata_filter}")
+    st.markdown(
+        f'Data yang difilter berdasarkan Tahun: <span style="color:red">{tahun_filter}</span>, '
+        f'Bulan: <span style="color:red">{bulan_filter}</span>, '
+        f'Tempat Wisata: <span style="color:red">{nama_wisata_filter}</span>',
+        unsafe_allow_html=True
+    )
 
 
    
@@ -52,7 +57,7 @@ else:
         
         
         col1, col2, col3, col4 = st.columns(4)
-        col1.metric(label="Total Banyak Wisatawan", value= f"{int(total_semua_tahun)}")
+        col1.metric(label="Total Banyak Wisatawan", value= f"{int(total_semua_tahun):,}")
         col2.metric(label="Bulan dengan Wisatawan Terbanyak", value=f"{bulan_terbanyak_nama}")
         col3.metric(label="Tahun dengan Wisatawan Terbanyak", value=f"{tahun_terbanyak}")
         col4.metric(label="Wisata dengan Wisatawan Terbanyak", value=f"{nama_terbanyak}")
@@ -62,7 +67,12 @@ else:
         with col_chart_tahun:
             # **Chart Total Kunjungan per Tahun**
             st.subheader("Total Kunjungan per Tahun")
-            st.write(f"Data yang difilter berdasarkan Tahun: {tahun_filter}, Bulan: {bulan_filter}, Nama Wisata: {nama_wisata_filter}")
+            st.markdown(
+                f'Data yang difilter berdasarkan Tahun: <span style="color:red">{tahun_filter}</span>, '
+                f'Bulan: <span style="color:red">{bulan_filter}</span>, '
+                f'Tempat Wisata: <span style="color:red">{nama_wisata_filter}</span>',
+                unsafe_allow_html=True
+            )
             grouped_by_tahun = controller.get_grouped_data(filtered_data, 'tahun')
             chart_tahun = alt.Chart(grouped_by_tahun).mark_bar().encode(
                 x='tahun:N', y='kunjungan:Q', color='tahun:N', tooltip=['tahun', 'kunjungan']
@@ -72,7 +82,12 @@ else:
         with col_chart_bulan:
             # **Chart Total Kunjungan per Bulan**
             st.subheader("Total Kunjungan per Bulan")
-            st.write(f"Data yang difilter berdasarkan Tahun: {tahun_filter}, Bulan: {bulan_filter}, Nama Wisata: {nama_wisata_filter}")
+            st.markdown(
+                f'Data yang difilter berdasarkan Tahun: <span style="color:red">{tahun_filter}</span>, '
+                f'Bulan: <span style="color:red">{bulan_filter}</span>, '
+                f'Tempat Wisata: <span style="color:red">{nama_wisata_filter}</span>',
+                unsafe_allow_html=True
+            )
             bulan_order = ["JANUARI", "PEBRUARI", "MARET", "APRIL", "MEI", "JUNI", 
                       "JULI", "AGUSTUS", "SEPTEMBER", "OKTOBER", "NOPEMBER", "DESEMBER"]
             total_per_bulan = controller.get_total_per_bulan(filtered_data)
@@ -84,7 +99,12 @@ else:
 
         # **Chart Total Kunjungan per Wisata**
         st.subheader("Total Kunjungan per Tempat Wisata")
-        st.write(f"Data yang difilter berdasarkan Tahun: {tahun_filter}, Bulan: {bulan_filter}, Nama Wisata: {nama_wisata_filter}")
+        st.markdown(
+            f'Data yang difilter berdasarkan Tahun: <span style="color:red">{tahun_filter}</span>, '
+            f'Bulan: <span style="color:red">{bulan_filter}</span>, '
+            f'Tempat Wisata: <span style="color:red">{nama_wisata_filter}</span>',
+            unsafe_allow_html=True
+        )
         grouped_by_nama = controller.get_grouped_data(filtered_data, 'nama')
         chart_nama = alt.Chart(grouped_by_nama).mark_bar().encode(
             x='nama:N', y='kunjungan:Q', color='nama:N', tooltip=['nama', 'kunjungan']
