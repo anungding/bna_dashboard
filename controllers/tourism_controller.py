@@ -35,6 +35,7 @@ class TourismController:
             df.replace(r"^\s*-+\s*$", "0", regex=True, inplace=True)
             df.columns = df.columns.str.strip().str.lower()
 
+            # Normalisasi nama bulan
             df['bulan'] = df['bulan'].str.strip().replace({
                 "JAN": "JANUARI", "FEB": "PEBRUARI", "MAR": "MARET",
                 "APR": "APRIL", "MEI": "MEI", "JUN": "JUNI",
@@ -42,30 +43,39 @@ class TourismController:
                 "OKT": "OKTOBER", "NOP": "NOPEMBER", "DES": "DESEMBER"
             })
 
-            df = df.rename(columns={'pengunjung': 'kunjungan'})
+            # **Gabungkan semua kolom terkait kunjungan jika ada**
+            kolom_kunjungan = ['kunjungan', 'pengunjung', 'jumlah kunjungan', 'total pengunjung']
+            kolom_ada = [col for col in kolom_kunjungan if col in df.columns]
 
-            if 'kunjungan' in df.columns and 'pengunjung' in df.columns:
-                df['kunjungan'] = df[['kunjungan', 'pengunjung']].sum(axis=1)
-                df.drop(columns=['pengunjung'], inplace=True)
-            
+            if len(kolom_ada) > 1:
+                df['kunjungan'] = df[kolom_ada].sum(axis=1)  # Jumlahkan semua yang ada
+                df.drop(columns=kolom_ada, inplace=True)  # Hapus semua kolom lama
+            elif len(kolom_ada) == 1:
+                df.rename(columns={kolom_ada[0]: 'kunjungan'}, inplace=True)
+
+            # Hapus baris dengan bulan kosong
             if 'bulan' in df.columns:
                 df = df.dropna(subset=['bulan'])
-            
+
+            # Pastikan kolom 'kunjungan' dalam format numerik
             if 'kunjungan' in df.columns:
                 df['kunjungan'] = df['kunjungan'].astype(str).str.replace(',', '').astype(float)
                 df['kunjungan'] = df['kunjungan'].fillna(0)
-            
+
+            # Tambahkan kolom tahun dan nama
             df['tahun'] = str(tahun)
             df['nama'] = nama
 
+            # Atur ulang urutan kolom
             col_order = ['nama', 'tahun', 'bulan'] + [col for col in df.columns if col not in ['nama', 'tahun', 'bulan']]
-            df = df[[col for col in col_order if col in df.columns]]  
+            df = df[[col for col in col_order if col in df.columns]]
 
             return df
 
         except Exception as e:
             print(f"Kesalahan saat memproses file {file_path}: {e}")
             return pd.DataFrame()
+
 
     def load_combined_data(self):
         data_files = self.load_data_from_folder()
