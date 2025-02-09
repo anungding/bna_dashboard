@@ -1,6 +1,5 @@
 # BNA DATA
-- Dashboard
-- Dataset
+Kami percaya bahwa data adalah kunci untuk pengambilan keputusan yang lebih baik. Oleh karena itu, kami menghadirkan BNA DASHBOARD, sebuah platform open-source yang menyediakan data, dashboard, dan visualisasi interaktif untuk mendukung transparansi, inovasi, dan kemajuan di BNA.
 
 #### Install App
 - Clone repository ke lokal
