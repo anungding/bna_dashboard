@@ -16,7 +16,7 @@ Kami percaya bahwa data adalah kunci untuk pengambilan keputusan yang lebih baik
 - Run python -m streamlit run app.py
 
 # DOKUMENTASI
-### Format .csv file untuk data GIS
+### 👉Format .csv file untuk data GIS
 | kecamatan  | x          | y          | total  |
 |------------|------------|------------|--------|
 | Mandiraja  | bla        | bli        | 28000  |
@@ -26,7 +26,7 @@ Kami percaya bahwa data adalah kunci untuk pengambilan keputusan yang lebih baik
 ##### Harus ada kolom kecamatan dan kolom total.
 ##### Dataset harus dari sumber resmi (BPS atau website milik pemerintah)
 
-### Struktur Konten (Pages)
+### 👉Struktur Konten (Pages)
 #### example:
 - Judul (DATA KESEHATAN BNA)
     - Sub Judul 1 (DATA TENAGA KESEHATAN BNA)
