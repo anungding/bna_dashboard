@@ -8,13 +8,13 @@ st.title("DATA BENCANA BNA 🌋")
 st.markdown("Silakan pilih filter yang sesuai untuk melihat data yang relevan dengan kebutuhan Anda.")
 
 # Pastikan controller tersedia di session state
-if "bencana_controller" not in st.session_state:
-    st.session_state["bencana_controller"] = DisasterController()
+if "disaster_controller" not in st.session_state:
+    st.session_state["disaster_controller"] = DisasterController()
 
-bencana_controller = st.session_state["bencana_controller"]
+disaster_controller = st.session_state["disaster_controller"]
 
 # Ambil data yang sudah diproses
-df_combined = bencana_controller.data
+df_combined = disaster_controller.data
 
 if df_combined.empty:
     st.error("Tidak ada data yang berhasil dimuat!")
@@ -33,7 +33,7 @@ else:
         kecamatan_filter = st.selectbox("Pilih Kecamatan", kecamatan_options)
 
     # Filter data
-    filtered_data = bencana_controller.filter_data(tahun_filter, kategori_filter, kecamatan_filter)
+    filtered_data = disaster_controller.filter_data(tahun_filter, kategori_filter, kecamatan_filter)
 
     st.markdown(
         f'Data yang difilter berdasarkan Tahun: <span style="color:red">{tahun_filter}</span>, '
@@ -51,7 +51,7 @@ else:
         total_kategori_paling_banyak = filtered_data.groupby('Kategori')['Total'].sum()
         kategori_terbanyak = total_kategori_paling_banyak.idxmax()
 
-        total_bulan_paling_banyak = bencana_controller.get_total_per_bulan(filtered_data)
+        total_bulan_paling_banyak = disaster_controller.get_total_per_bulan(filtered_data)
         bulan_terbanyak = total_bulan_paling_banyak.loc[total_bulan_paling_banyak['Total'].idxmax()]
         bulan_terbanyak_nama = bulan_terbanyak['Bulan']
 
@@ -68,7 +68,7 @@ else:
         col_chart_tahun, col_chart_bulan = st.columns(2)
         with col_chart_tahun:
             # **Chart Total Bencana per Tahun**
-            grouped_by_tahun = bencana_controller.get_grouped_data(filtered_data, 'Tahun')
+            grouped_by_tahun = disaster_controller.get_grouped_data(filtered_data, 'Tahun')
             st.subheader("Total Bencana per Tahun")
             st.markdown(
                 f'Data yang difilter berdasarkan Tahun: <span style="color:red">{tahun_filter}</span>, '
@@ -82,7 +82,7 @@ else:
             st.altair_chart(chart_tahun, use_container_width=True)
         with col_chart_bulan:
             # **Chart Total Bencana per Bulan**
-            total_per_bulan = bencana_controller.get_total_per_bulan(filtered_data)
+            total_per_bulan = disaster_controller.get_total_per_bulan(filtered_data)
             st.subheader("Total Bencana per Bulan")
             st.markdown(
                 f'Data yang difilter berdasarkan Tahun: <span style="color:red">{tahun_filter}</span>, '
@@ -101,7 +101,7 @@ else:
             st.altair_chart(chart_bulan, use_container_width=True)
     
         # **Chart Total Bencana per Kategori**
-        grouped_by_tahun = bencana_controller.get_grouped_data(filtered_data, 'Kategori')
+        grouped_by_tahun = disaster_controller.get_grouped_data(filtered_data, 'Kategori')
         st.subheader("Total Bencana per Kategori")
         st.markdown(
             f'Data yang difilter berdasarkan Tahun: <span style="color:red">{tahun_filter}</span>, '
@@ -115,7 +115,7 @@ else:
         st.altair_chart(chart_tahun, use_container_width=True)
 
         # **Chart Total Bencana per Kecamatan**
-        grouped_by_tahun = bencana_controller.get_grouped_data(filtered_data, 'Kecamatan')
+        grouped_by_tahun = disaster_controller.get_grouped_data(filtered_data, 'Kecamatan')
         st.subheader("Total Bencana per Kecamatan")
         st.markdown(
             f'Data yang difilter berdasarkan Tahun: <span style="color:red">{tahun_filter}</span>, '
@@ -129,9 +129,15 @@ else:
         st.altair_chart(chart_tahun, use_container_width=True)
 
 
-    st.dataframe(filtered_data, use_container_width=True)
+        st.dataframe(filtered_data, use_container_width=True)
 
-    # Unduh data
-    csv = bencana_controller.convert_df(filtered_data)
-    st.download_button("Unduh Data yang Diperbarui", data=csv, file_name='data_filtered.csv', mime='text/csv')
+        # Unduh data
+        csv = disaster_controller.convert_df(filtered_data)
+        st.download_button("Unduh Data yang Diperbarui", data=csv, file_name='data_filtered.csv', mime='text/csv')
+        # Keterangan Sumber Data
+        st.markdown(
+            """
+            ###### Sumber Dataset: BANJARNEGARA SATU DATA
+            """
+        )
 

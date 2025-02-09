@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 
-class PariwisataController:
+class TourismController:
     def __init__(self, dataset_folder='dataset/pariwisata/'):
         self.dataset_folder = dataset_folder
         self.data = None

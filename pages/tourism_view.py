@@ -1,14 +1,14 @@
 import streamlit as st
 import altair as alt
-from controllers.pariwisata_controller import PariwisataController
+from controllers.tourism_controller import TourismController
 
 st.title("DATA PARIWISATA BNA 🚠")
 st.markdown("Silakan pilih filter yang sesuai untuk melihat data yang relevan.")
 
 # Inisialisasi controller
-if "pariwisata_controller" not in st.session_state:
-    st.session_state["pariwisata_controller"] = PariwisataController()
-controller = st.session_state["pariwisata_controller"]
+if "tourism_controller" not in st.session_state:
+    st.session_state["tourism_controller"] = TourismController()
+controller = st.session_state["tourism_controller"]
 
 # Ambil data
 if controller.data is None or controller.data.empty:
@@ -33,7 +33,30 @@ else:
     st.write(f"Data yang difilter berdasarkan Tahun: {tahun_filter}, Bulan: {bulan_filter}, Nama Wisata: {nama_wisata_filter}")
 
 
+   
+
     if not filtered_data.empty:
+
+        total_semua_tahun = filtered_data['kunjungan'].sum()
+ 
+        total_bulan_paling_banyak = filtered_data.groupby('bulan')['kunjungan'].sum()
+        bulan_terbanyak_nama = total_bulan_paling_banyak.idxmax()
+
+
+        total_nama_paling_banyak = filtered_data.groupby('nama')['kunjungan'].sum()
+        nama_terbanyak = total_nama_paling_banyak.idxmax()
+
+
+        total_tahun_paling_banyak = filtered_data.groupby('tahun')['kunjungan'].sum()
+        tahun_terbanyak = total_tahun_paling_banyak.idxmax()  # Menyimpan tahun dengan bencana terbanyak
+        
+        
+        col1, col2, col3, col4 = st.columns(4)
+        col1.metric(label="Total Banyak Wisatawan", value= f"{int(total_semua_tahun)}")
+        col2.metric(label="Bulan dengan Wisatawan Terbanyak", value=f"{bulan_terbanyak_nama}")
+        col3.metric(label="Tahun dengan Wisatawan Terbanyak", value=f"{tahun_terbanyak}")
+        col4.metric(label="Wisata dengan Wisatawan Terbanyak", value=f"{nama_terbanyak}")
+
         col_chart_tahun, col_chart_bulan = st.columns(2)
 
         with col_chart_tahun:
@@ -50,9 +73,12 @@ else:
             # **Chart Total Kunjungan per Bulan**
             st.subheader("Total Kunjungan per Bulan")
             st.write(f"Data yang difilter berdasarkan Tahun: {tahun_filter}, Bulan: {bulan_filter}, Nama Wisata: {nama_wisata_filter}")
+            bulan_order = ["JANUARI", "PEBRUARI", "MARET", "APRIL", "MEI", "JUNI", 
+                      "JULI", "AGUSTUS", "SEPTEMBER", "OKTOBER", "NOPEMBER", "DESEMBER"]
             total_per_bulan = controller.get_total_per_bulan(filtered_data)
             chart_bulan = alt.Chart(total_per_bulan).mark_bar().encode(
-                x='Bulan:N', y='Total:Q', color='Bulan:N', tooltip=['Bulan', 'Total']
+                y='Total:Q', x=alt.X('Bulan:N', sort=bulan_order), tooltip=['Bulan', 'Total'],
+                color=alt.Color('Bulan:N', sort=bulan_order),
             ).properties(width=600, height=400)
             st.altair_chart(chart_bulan, use_container_width=True)
 
