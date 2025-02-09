@@ -1,22 +1,21 @@
 # BNA DATA
 Kami percaya bahwa data adalah kunci untuk pengambilan keputusan yang lebih baik. Oleh karena itu, kami menghadirkan BNA DASHBOARD, sebuah platform open-source yang menyediakan data, dashboard, dan visualisasi interaktif untuk mendukung transparansi, inovasi, dan kemajuan di BNA.
 
-#### Notes
-- Semua data .csv ada di folder dataset
+#### Catatan
+- Semua data .csv ada di folder dataset.
+- Semua data boleh diunduh.
 - Semua data diambil dari BPS Kabupaten Banjarnegara, Banajarnegara Satu Datu, dan Sumber data resmi lainya milik pemerintah/lembaga/organsiasi resmi.
 
-#### Teknologi yang digunakan
+#### Teknologi
 - Bahasa Pemograman: Python
 - Framework: Streamlit
   
-#### Install App
+#### Menjalankan Aplikasi di Lokal
 - Clone repository ke lokal
 - Install Dependencies
 - Run python -m streamlit run app.py
 
-##### DATA BNA UNTUK SEMUA
-
-# DOC
+# DOKUMENTASI
 ### Format .csv file untuk data GIS
 | kecamatan  | x          | y          | total  |
 |------------|------------|------------|--------|
@@ -41,3 +40,5 @@ Kami percaya bahwa data adalah kunci untuk pengambilan keputusan yang lebih baik
         - Card
         - Chart
         - Dataset
+  
+## TERIMA KASIH
