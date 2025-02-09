@@ -96,7 +96,14 @@ class DisasterController:
     def get_total_per_bulan(self, df):
         """Menghitung total bencana per bulan."""
         bulan = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Juni', 'Jul', 'Agt', 'Sept', 'Okt', 'Nop', 'Des']
-        total_per_bulan = {bulan_name: df[bulan_name].sum() for bulan_name in bulan if bulan_name in df.columns}
-        return pd.DataFrame(list(total_per_bulan.items()), columns=['Bulan', 'Total'])
+        total_per_bulan = {bulan_name: df[bulan_name].sum() for bulan_name in bulan if bulan_name in df.columns} 
+        total_per_bulan_df = pd.DataFrame(list(total_per_bulan.items()), columns=['Bulan', 'Total'])
 
+        # Menyusun bulan sesuai urutan yang benar
+        bulan_order = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Juni', 'Jul', 'Agt', 'Sept', 'Okt', 'Nop', 'Des']
+        total_per_bulan_df['Bulan'] = pd.Categorical(total_per_bulan_df['Bulan'], categories=bulan_order, ordered=True)
 
+        # Mengurutkan berdasarkan bulan
+        total_per_bulan_df = total_per_bulan_df.sort_values('Bulan')
+
+        return total_per_bulan_df

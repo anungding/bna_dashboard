@@ -3,6 +3,8 @@ import streamlit as st
 # Judul utama dari dashboard
 st.title("DASHBOARD BNA ⏹️")
 
+st.markdown('<span style="color:red">Gunakan perangkat dengan layar besar dan resolusi lebih tinggi dari 720p untuk tampilan yang lebih baik.</span>', unsafe_allow_html=True)
+
 # Penjelasan singkat tentang dashboard BNA
 st.markdown(
 """
