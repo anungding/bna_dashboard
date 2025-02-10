@@ -3,7 +3,7 @@ import os
 import streamlit as st
 
 class DisasterController:
-    def __init__(self, dataset_folder='dataset/bencana/'):
+    def __init__(self, dataset_folder='dataset/disaster/'):
         self.dataset_folder = dataset_folder
         self.data = None
         self.load_combined_data()
