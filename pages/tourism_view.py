@@ -114,7 +114,12 @@ else:
 
         st.subheader("DATASET")
         # **Keterangan Filter Data
-        st.write(f"Data yang difilter berdasarkan Tahun: {tahun_filter}, Bulan: {bulan_filter}, Nama Wisata: {nama_wisata_filter}")
+        st.markdown(
+            f'Data yang difilter berdasarkan Tahun: <span style="color:red">{tahun_filter}</span>, '
+            f'Bulan: <span style="color:red">{bulan_filter}</span>, '
+            f'Tempat Wisata: <span style="color:red">{nama_wisata_filter}</span>',
+            unsafe_allow_html=True
+        )
         st.dataframe(filtered_data, use_container_width=True)
 
         # Unduh data

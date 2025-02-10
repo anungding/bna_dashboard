@@ -69,18 +69,18 @@ class DisasterController:
         self.data = combined_df
         return self.data
 
-    def filter_data(self, tahun="All", kategori="All", kecamatan="All"):
+    def filter_data(self, tahun="Semua Tahun", kategori="Semua Kategori", kecamatan="Semua Kecamatan"):
         """Filter data berdasarkan tahun, kategori, dan kecamatan."""
         if self.data is None or self.data.empty:
             return pd.DataFrame()
 
         filtered_df = self.data.copy()
 
-        if tahun != "All":
+        if tahun != "Semua Tahun":
             filtered_df = filtered_df[filtered_df['Tahun'] == tahun]
-        if kategori != "All":
+        if kategori != "Semua Kategori":
             filtered_df = filtered_df[filtered_df['Kategori'] == kategori]
-        if kecamatan != "All":
+        if kecamatan != "Semua Kecamatan":
             filtered_df = filtered_df[filtered_df['Kecamatan'] == kecamatan]
 
         return filtered_df

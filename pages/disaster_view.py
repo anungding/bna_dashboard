@@ -20,9 +20,9 @@ if df_combined.empty:
     st.error("Tidak ada data yang berhasil dimuat!")
 else:
     # Pilihan filter
-    tahun_options = ["All"] + list(df_combined['Tahun'].unique())
-    kategori_options = ["All"] + list(df_combined['Kategori'].unique())
-    kecamatan_options = ["All"] + list(df_combined['Kecamatan'].unique())
+    tahun_options = ["Semua Tahun"] + list(df_combined['Tahun'].unique())
+    kategori_options = ["Semua Kategori"] + list(df_combined['Kategori'].unique())
+    kecamatan_options = ["Semua Kecamatan"] + list(df_combined['Kecamatan'].unique())
 
     col1, col2, col3 = st.columns(3)
     with col1:
@@ -129,6 +129,13 @@ else:
         st.altair_chart(chart_tahun, use_container_width=True)
 
 
+        st.subheader("DATASET")
+        st.markdown(
+            f'Data yang difilter berdasarkan Tahun: <span style="color:red">{tahun_filter}</span>, '
+            f'Kategori: <span style="color:red">{kategori_filter}</span>, '
+            f'Kecamatan: <span style="color:red">{kecamatan_filter}</span>',
+            unsafe_allow_html=True
+        )
         st.dataframe(filtered_data, use_container_width=True)
 
         # Unduh data
