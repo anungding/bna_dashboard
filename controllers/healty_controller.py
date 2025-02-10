@@ -89,6 +89,11 @@ class HealtyController:
         total = int(df_combined[df_combined['tahun'] == str(tahun_terakhir)][kolom].sum()) 
         return tahun_terakhir, total
 
+    def convert_df(self, df):
+        """Mengonversi DataFrame ke CSV untuk diunduh."""
+        return df.to_csv(index=False).encode('utf-8')
+
+
 
 
 

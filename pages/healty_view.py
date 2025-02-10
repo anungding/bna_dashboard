@@ -86,6 +86,11 @@ sebaran_tenaga_kesehatan = sebaran_tenaga_kesehatan.melt(id_vars=['kecamatan'], 
                                                          var_name='Jenis Tenaga Kesehatan', value_name='Jumlah')
 
 st.subheader("Total Tenaga Kesehatan per Kecamatan")
+st.markdown(
+    f'Data yang difilter berdasarkan Tahun: <span style="color:red">{selected_year} </span>, '
+    f'Kecamatan: <span style="color:red">{selected_year}</span>',              
+    unsafe_allow_html=True
+)
 chart = alt.Chart(sebaran_tenaga_kesehatan).mark_bar().encode(
     y=alt.Y('kecamatan:N', title='Kecamatan', sort='-x'),
     x=alt.X('Jumlah:Q', title='Jumlah Tenaga Kesehatan'),
@@ -112,6 +117,11 @@ kesehatan_per_tahun = df_filtered_kesehatan.groupby(['tahun'])[columns_kesehatan
 kesehatan_per_tahun = kesehatan_per_tahun.melt(id_vars=['tahun'], var_name='Jenis Tenaga Kesehatan', value_name='Jumlah')
 
 st.subheader(f"Total Tenaga Kesehatan dari Tahun ke Tahun ({selected_kecamatan})")
+st.markdown(
+    f'Data yang difilter berdasarkan Tahun: <span style="color:red">{selected_year} </span>, '
+    f'Kecamatan: <span style="color:red">{selected_year}</span>',              
+    unsafe_allow_html=True
+)
 chart_tahunan = alt.Chart(kesehatan_per_tahun).mark_line(point=True).encode(
     x=alt.X('tahun:O', title='Tahun'),
     y=alt.Y('Jumlah:Q', title='Jumlah Tenaga Kesehatan'),
@@ -127,7 +137,15 @@ st.altair_chart(chart_tahunan, use_container_width=True)
 
 # **Dataset Table**
 st.subheader("DATASET")
+st.markdown(
+    f'Data yang difilter berdasarkan Tahun: <span style="color:red">{selected_year} </span>, '
+    f'Kecamatan: <span style="color:red">{selected_year}</span>',            
+    unsafe_allow_html=True
+)
 st.dataframe(filtered_data)
+
+csv = healty_controller.convert_df(filtered_data)
+st.download_button("Unduh Data yang Diperbarui", data=csv, file_name='healty_filtered.csv', mime='text/csv')
 
 # **Sumber Data**
 st.markdown("###### Sumber Dataset: BANJARNEGARA SATU DATA")
