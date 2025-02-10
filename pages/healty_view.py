@@ -98,6 +98,33 @@ chart = alt.Chart(sebaran_tenaga_kesehatan).mark_bar().encode(
 
 st.altair_chart(chart, use_container_width=True)
 
+# **Terapkan Filter Kecamatan ke Data**
+if selected_kecamatan != 'Semua Kecamatan':
+    df_filtered_kesehatan = df_combined[df_combined['kecamatan'] == selected_kecamatan]
+else:
+    df_filtered_kesehatan = df_combined
+
+# **Sebaran Tenaga Kesehatan per Tahun (dengan filter Kecamatan)**
+columns_kesehatan = ['dokter', 'perawat', 'bidan', 'dokter_gigi', 'farmasi', 'tenaga_gizi', 
+                     'tenaga_kesehatan_masyarakat', 'tenaga_kesehatan_lingkungan', 'ahli_teknologi_laboratorium_medik']
+
+kesehatan_per_tahun = df_filtered_kesehatan.groupby(['tahun'])[columns_kesehatan].sum().reset_index()
+kesehatan_per_tahun = kesehatan_per_tahun.melt(id_vars=['tahun'], var_name='Jenis Tenaga Kesehatan', value_name='Jumlah')
+
+st.subheader(f"Total Tenaga Kesehatan dari Tahun ke Tahun ({selected_kecamatan})")
+chart_tahunan = alt.Chart(kesehatan_per_tahun).mark_line(point=True).encode(
+    x=alt.X('tahun:O', title='Tahun'),
+    y=alt.Y('Jumlah:Q', title='Jumlah Tenaga Kesehatan'),
+    color='Jenis Tenaga Kesehatan:N',
+    tooltip=['tahun', 'Jenis Tenaga Kesehatan', 'Jumlah']
+).properties(
+    width=700,
+    height=500
+)
+
+st.altair_chart(chart_tahunan, use_container_width=True)
+
+
 # **Dataset Table**
 st.subheader("DATASET")
 st.dataframe(filtered_data)
