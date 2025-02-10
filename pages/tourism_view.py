@@ -15,9 +15,9 @@ if controller.data is None or controller.data.empty:
     st.error("Tidak ada data yang berhasil dimuat!")
 else:
     # Pilihan filter
-    tahun_options = ["All"] + sorted(controller.data['tahun'].unique())
-    bulan_options = ["All"] + sorted(controller.data['bulan'].unique())
-    nama_wisata_options = ["All"] + sorted(controller.data['nama'].unique())
+    tahun_options = ["Semua Tahun"] + sorted(controller.data['tahun'].unique())
+    bulan_options = ["Semua Bulan"] + sorted(controller.data['bulan'].unique())
+    nama_wisata_options = ["Semua Nama Wisata"] + sorted(controller.data['nama'].unique())
 
     col1, col2, col3 = st.columns(3)
     with col1:

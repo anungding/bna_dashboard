@@ -2,7 +2,7 @@ import os
 import pandas as pd
 
 class TourismController:
-    def __init__(self, dataset_folder='dataset/pariwisata/'):
+    def __init__(self, dataset_folder='dataset/tourism/'):
         self.dataset_folder = dataset_folder
         self.data = None
         self.tahun_list = []
@@ -92,17 +92,17 @@ class TourismController:
                     self.nama_wisata_list.add(nama)
 
         self.data = pd.concat(data_frames, ignore_index=True) if data_frames else pd.DataFrame()
-        self.tahun_list = ["All"] + sorted(self.tahun_list)
-        self.bulan_list = ["All"] + sorted(self.bulan_list)
-        self.nama_wisata_list = ["All"] + sorted(self.nama_wisata_list)
+        self.tahun_list = ["Semua Tahun"] + sorted(self.tahun_list)
+        self.bulan_list = ["Semua Bulan"] + sorted(self.bulan_list)
+        self.nama_wisata_list = ["Semua Nama Wisata"] + sorted(self.nama_wisata_list)
 
     def get_filtered_data(self, tahun, bulan, nama_wisata):
         df = self.data.copy()
-        if tahun != "All":
+        if tahun != "Semua Tahun":
             df = df[df['tahun'] == str(tahun)]
-        if bulan != "All":
+        if bulan != "Semua Bulan":
             df = df[df['bulan'] == bulan]
-        if nama_wisata != "All":
+        if nama_wisata != "Semua Nama Wisata":
             df = df[df['nama'] == nama_wisata]
         return df
 
