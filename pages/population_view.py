@@ -78,12 +78,9 @@ total_jumlah_laki_laki = population_df['laki_laki'].sum()
 total_jumlah_perempuan = population_df['perempuan'].sum()
 
 col1, col2, col3 = st.columns(3)
-with col1:
-    st.metric("TOTAL PENDUDUK", total_jumlah_penduduk)
-with col2:
-    st.metric("JUMLAH LAKI-LAKI", total_jumlah_laki_laki)
-with col3:
-    st.metric("JUMLAH PEREMPUAN", total_jumlah_perempuan)
+col1.metric(label="Total Banyak Penduduk", value= f"{int(total_jumlah_penduduk):,}")
+col2.metric(label="Total Banyak Laki-Laki", value= f"{int(total_jumlah_laki_laki):,}")
+col3.metric(label="Total Banyak Perempuan", value= f"{int(total_jumlah_perempuan):,}")
 
 # ====== Tampilkan Peta ======
 st.markdown("""
