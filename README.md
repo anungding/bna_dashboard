@@ -7,8 +7,8 @@ Kami percaya bahwa data adalah kunci untuk pengambilan keputusan yang lebih baik
 - Semua data diambil dari BPS Kabupaten Banjarnegara, Banajarnegara Satu Datu, dan Sumber data resmi lainya milik pemerintah/lembaga/organsiasi resmi.
 
 #### Teknologi
-- Bahasa Pemograman: Python
-- Framework: Streamlit
+🐍 Bahasa Pemograman: Python
+⭕ Framework: Streamlit
   
 #### Menjalankan Aplikasi di Lokal
 - Clone repository ke lokal
